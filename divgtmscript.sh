@@ -6,6 +6,7 @@
 
 ## Your DNSTT Nameserver & your Domain `A` Record
 NS='ns-kh2.vpnjz.com'
+NS1='team-mamawers.elcavlaw.com'
 A='ns-kh2.vpnjz.com'
 
 ## Repeat dig cmd loop time (seconds) (positive interger only)
@@ -54,7 +55,7 @@ check(){
   done
  done
 }
-echo "DNSTT Keep-Alive script <Lantin Nohanih>"
+echo "DNSTT Keep-Alive script <Gabriel Divinagracia>"
 echo -e "DNS List: [\e[1;34m${HOSTS[*]}\e[0m]"
 echo "CTRL + C to close script"
 [[ "${LOOP_DELAY}" -eq 1 ]] && let "LOOP_DELAY++";
