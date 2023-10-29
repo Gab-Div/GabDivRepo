@@ -7,11 +7,12 @@
 ## Your DNSTT Nameserver & your Domain `A` Record
 NS='ns-kh2.vpnjz.com'
 A='ns-kh2.vpnjz.com'
+
 ## Repeat dig cmd loop time (seconds) (positive interger only)
 LOOP_DELAY=5
 
 ## Add your DNS here
-declare -a HOSTS=('112.198.115.36' '112.198.115.44' '124.6.181.36'124.6.181.20')
+declare -a HOSTS=('112.198.115.44' '112.198.115.36' '124.6.181.36' '124.6.181.20')
 
 ## Linux' dig command executable filepath
 ## Select value: "CUSTOM|C" or "DEFAULT|D"
@@ -45,7 +46,7 @@ endscript() {
 trap endscript 2 15
 check(){
  for ((i=0; i<"${#HOSTS[*]}"; i++)); do
-  for R in "${A}" "${NS}"; do
+  for R in "${A}" "${NS}" "${A1}" "${NS1}" "${A2}" "${NS2}"; do
    T="${HOSTS[$i]}"
    [[ -z $(timeout -k 3 3 ${_DIG} @${T} ${R}) ]] && M=31 || M=32;
    echo -e "\e[1;${M}m\$ R:${R} D:${T}\e[0m"
@@ -53,7 +54,7 @@ check(){
   done
  done
 }
-echo "DNSTT Keep-Alive script <Dexter Eskalarte>"
+echo "DNSTT Keep-Alive script <Lantin Nohanih>"
 echo -e "DNS List: [\e[1;34m${HOSTS[*]}\e[0m]"
 echo "CTRL + C to close script"
 [[ "${LOOP_DELAY}" -eq 1 ]] && let "LOOP_DELAY++";
@@ -70,4 +71,4 @@ case "${@}" in
  check
  ;;
 esac
-exit 0￼Enter
+exit 0
